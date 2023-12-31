@@ -32,7 +32,7 @@ public:
 
 	void registration()
 	{
-		if (DatabaseManager::getInstance().getAccountsQantity() < 1)
+		if (DatabaseManager::getInstance().getAccountsQuantity() < 1)
 		{
 			DatabaseManager::getInstance().addUser(dataInput(User::ADMIN));
 		}
@@ -57,10 +57,16 @@ public:
 		cout << "Введите пароль: ";
 		cin >> password;
 
-		if (DatabaseManager::getInstance().checkExistence(login, password))
+		if (DatabaseManager::getInstance().validate(login, password).first)
 		{
+			// TODO go to user`s area (admin or tester)
 			
-		};
+		}
+		else
+		{
+			cout << "Неправильный логин или пароль\n";
+			this->login();
+		}
 	}
 
 private:
@@ -72,7 +78,7 @@ private:
 		string login;
 		string password;
 
-		cout << "----* Регистрация администратора *----\nВведите ФИО без пробелов: ";
+		cout << "------* Регистрация *------\nВведите ФИО без пробелов: ";
 		cin >> fio;
 
 		cout << "Введите домашний адрес без пробелов: ";
@@ -83,6 +89,12 @@ private:
 
 		cout << "Придумайте и введите логин без пробелов: ";
 		cin >> login;
+
+		if (DatabaseManager::getInstance().checkExistence(login))
+		{
+			cout << "Аккаунт с таким логином уже существует. Выберите другой логин\n";
+			dataInput(user_type);
+		}
 
 		cout << "Придумайте и введите пароль без пробелов: ";
 		cin >> password;

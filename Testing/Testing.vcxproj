@@ -129,14 +129,18 @@
   <ItemGroup>
     <ClCompile Include="DatabaseManager.cpp" />
     <ClCompile Include="Main.cpp" />
-    <ClCompile Include="sha256.c" />
+    <ClCompile Include="sha256\sha256.c" />
+    <ClCompile Include="sqlite\shell.c" />
+    <ClCompile Include="sqlite\sqlite3.c" />
     <ClCompile Include="SystemManager.cpp" />
     <ClCompile Include="User.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="DatabaseManager.h" />
     <ClInclude Include="Includes.h" />
-    <ClInclude Include="sha256.h" />
+    <ClInclude Include="sha256\sha256.h" />
+    <ClInclude Include="sqlite\sqlite3.h" />
+    <ClInclude Include="sqlite\sqlite3ext.h" />
     <ClInclude Include="SystemManager.h" />
     <ClInclude Include="User.h" />
   </ItemGroup>

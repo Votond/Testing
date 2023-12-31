@@ -13,6 +13,12 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Исходные файлы\sha256">
+      <UniqueIdentifier>{503e64bd-a4b6-4d1b-88c0-af6585b08f27}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Исходные файлы\sqlite">
+      <UniqueIdentifier>{40162ee7-24a0-44cf-9555-cf5f9710caf7}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -27,25 +33,37 @@
     <ClCompile Include="User.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
-    <ClCompile Include="sha256.c">
-      <Filter>Исходные файлы</Filter>
+    <ClCompile Include="sha256\sha256.c">
+      <Filter>Исходные файлы\sha256</Filter>
+    </ClCompile>
+    <ClCompile Include="sqlite\shell.c">
+      <Filter>Исходные файлы\sqlite</Filter>
+    </ClCompile>
+    <ClCompile Include="sqlite\sqlite3.c">
+      <Filter>Исходные файлы\sqlite</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Includes.h">
-      <Filter>Исходные файлы</Filter>
+    <ClInclude Include="User.h">
+      <Filter>Файлы заголовков</Filter>
     </ClInclude>
     <ClInclude Include="SystemManager.h">
-      <Filter>Исходные файлы</Filter>
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="Includes.h">
+      <Filter>Файлы заголовков</Filter>
     </ClInclude>
     <ClInclude Include="DatabaseManager.h">
-      <Filter>Исходные файлы</Filter>
+      <Filter>Файлы заголовков</Filter>
     </ClInclude>
-    <ClInclude Include="User.h">
-      <Filter>Исходные файлы</Filter>
+    <ClInclude Include="sha256\sha256.h">
+      <Filter>Исходные файлы\sha256</Filter>
     </ClInclude>
-    <ClInclude Include="sha256.h">
-      <Filter>Исходные файлы</Filter>
+    <ClInclude Include="sqlite\sqlite3.h">
+      <Filter>Исходные файлы\sqlite</Filter>
+    </ClInclude>
+    <ClInclude Include="sqlite\sqlite3ext.h">
+      <Filter>Исходные файлы\sqlite</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
