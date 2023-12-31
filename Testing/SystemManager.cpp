@@ -57,10 +57,20 @@ public:
 		cout << "Введите пароль: ";
 		cin >> password;
 
-		if (DatabaseManager::getInstance().validate(login, password).first)
+		pair<bool, User::USER_TYPE> pair = DatabaseManager::getInstance().validate(login, password);
+
+		if (pair.first)
 		{
-			// TODO go to user`s area (admin or tester)
-			
+			switch (pair.second)
+			{
+			case User::ADMIN:
+				// TODO go to user`s area
+				break;
+
+			case User::TESTER:
+				// TODO go to user`s area
+				break;
+			};
 		}
 		else
 		{

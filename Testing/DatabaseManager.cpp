@@ -29,32 +29,112 @@ public:
 
 	bool checkExistence(string login)
 	{
-		sqlite3_prepare_v2(db, "SELECT EXISTS(SELECT * FROM Reps WHERE UserId = % s) AS bool", -1, &stmt, 0);
-		sqlite3_step(stmt);
-		bool quantity = sqlite3_column_blob(stmt, 0);
+		string sql = format("SELECT COUNT(*) FROM users WHERE login = {}", SHA256::hashString(login));
+		int row_count;
+		int rc = sqlite3_prepare_v2(db, sql.c_str(), -1, &stmt, 0);
 
-		return quantity;
-	}
+		if (rc == SQLITE_OK)
+		{
+			sqlite3_step(stmt);
 
-	void addUser(User user)
-	{
-		string sql = format("INSERT INTO users (fio, address, phone, login, password, user_type) VALUES ({}, {}, {}, {}, {}, {})", user.getFio(), user.getAddress(), user.getPhoneNumber(), SHA256::hashString(user.getLogin()), SHA256::hashString(user.getPassword()), user.getUserType() == User::ADMIN ? "admin" : "tester");
-
-		int response = sqlite3_exec(db, sql.c_str(), nullptr, nullptr, &error);
-
-		if (response != SQLITE_OK)
+			if (rc == SQLITE_ROW)
+				row_count = sqlite3_column_int(stmt, 0);
+		}
+		else
 		{
 			cout << "Sqlite error: " << error;
+			return false;
 		}
+
+		if (row_count > 0)
+			return true;
+		else
+			return false;
+	}
+
+	bool addUser(User user)
+	{
+		string sql = format("INSERT INTO users (fio, address, phone, login, password, user_type) VALUES ({}, {}, {}, {}, {}, {})",
+			user.getFio(),
+			user.getAddress(),
+			user.getPhoneNumber(),
+			SHA256::hashString(user.getLogin()),
+			SHA256::hashString(user.getPassword()),
+			user.getUserType() == User::ADMIN ? "admin" : "tester"
+		);
+
+		int rc = sqlite3_exec(db, sql.c_str(), nullptr, nullptr, &error);
+
+		if (rc != SQLITE_OK)
+		{
+			cout << "Sqlite error: " << error;
+			return false;
+		}
+
+		return true;
 	}
 
 	pair<bool, User::USER_TYPE> validate(string login, string password)
 	{
-		int response = sqlite3_exec(db, "", nullptr, nullptr, &error);
+		string sql = format("SELECT COUNT(*) FROM users WHERE login = {} AND password = {}",
+			SHA256::hashString(login),
+			SHA256::hashString(password)
+		);
+		int row_count;
+		int rc = sqlite3_prepare_v2(db, sql.c_str(), -1, &stmt, 0);
 
-		if (response != SQLITE_OK)
+		if (rc == SQLITE_OK)
+		{
+			sqlite3_step(stmt);
+
+			if (rc == SQLITE_ROW)
+				row_count = sqlite3_column_int(stmt, 0);
+		}
+		else
 		{
 			cout << "Sqlite error: " << error;
+		}
+
+		if (row_count > 0)
+		{
+			string sql = format("SELECT * FROM users WHERE login = {} AND password = {}",
+				SHA256::hashString(login),
+				SHA256::hashString(password)
+			);
+			pair<bool, User::USER_TYPE> result;
+
+			int rc = sqlite3_prepare_v2(db, sql.c_str(), -1, &stmt, 0);
+
+			if (rc == SQLITE_OK)
+			{
+				sqlite3_step(stmt);
+
+				if (rc == SQLITE_ROW)
+				{
+					result.first = true;
+					result.second = string(reinterpret_cast<const char*>(sqlite3_column_text(stmt, 6))) == "admin" ? User::ADMIN : User::TESTER;
+
+					return result;
+				}
+			}
+			else
+			{
+				cout << "Sqlite error: " << error;
+
+				result.first = false;
+				result.second = User::TESTER;
+
+				return result;
+			}
+		}
+		else
+		{
+			pair<bool, User::USER_TYPE> result;
+
+			result.first = false;
+			result.second = User::TESTER;
+
+			return result;
 		}
 	}
 
@@ -62,6 +142,12 @@ private:
 	DatabaseManager()
 	{
 		createDatabase();
+	}
+
+	~DatabaseManager()
+	{
+		sqlite3_finalize(stmt);
+		sqlite3_close(db);
 	}
 
 	void createDatabase()
