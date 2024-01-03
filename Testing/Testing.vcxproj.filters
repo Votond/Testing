@@ -126,7 +126,7 @@
       <Filter>Исходные файлы\json</Filter>
     </ClInclude>
     <ClInclude Include="TestsDatabaseManager.h">
-      <Filter>Исходные файлы</Filter>
+      <Filter>Файлы заголовков</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
