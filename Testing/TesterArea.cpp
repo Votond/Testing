@@ -2,6 +2,7 @@
 #include "TesterArea.h"
 #include "json/json.h"
 #include "TestsDatabaseManager.cpp"
+#include "UserTest.h"
 
 class TesterArea
 {
@@ -13,7 +14,7 @@ public:
 		return instance();
 	}
 
-	void start()
+	void start(string login)
 	{
 		int action;
 
@@ -23,25 +24,26 @@ public:
 		switch (action)
 		{
 		case 1:
-			chooseResult();
+			chooseResult(login);
 			break;
 
 		case 2:
-			chooseTest();
+			chooseTest(login);
 			break;
 		}
 	}
 
-	void chooseTest()
+	void chooseTest(string login)
 	{
 		
 	}
 
-	void chooseResult()
+	void chooseResult(string login)
 	{
 		string section;
 		string name;
-		vector<string> sections = TestsDatabaseManager::getInstance().getSections();
+		TestsDatabaseManager tests_manager(login);
+		vector<string> sections = tests_manager.getSections();
 		vector<UserTest> tests;
 
 		printSections(sections);
@@ -49,7 +51,7 @@ public:
 		cout << "Введите название нужного раздела: ";
 		cin >> section;
 
-		tests = TestsDatabaseManager::getInstance().getTestsInSection(section);
+		tests = tests_manager.getTestsInSection(section);
 
 		printTests(tests);
 
@@ -63,7 +65,7 @@ public:
 		cout << "| Результат:\n";
 		printTestResult(test.getResult());
 
-		start();
+		start(login);
 	}
 
 	void startTest(int id)

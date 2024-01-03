@@ -140,6 +140,7 @@
     <ClCompile Include="sqlite\shell.c" />
     <ClCompile Include="sqlite\sqlite3.c" />
     <ClCompile Include="SystemManager.cpp" />
+    <ClCompile Include="Test.cpp" />
     <ClCompile Include="TestResult.cpp" />
     <ClCompile Include="TestsDatabaseManager.cpp" />
     <ClCompile Include="UserTest.cpp" />
@@ -164,6 +165,7 @@
     <ClInclude Include="sqlite\sqlite3.h" />
     <ClInclude Include="sqlite\sqlite3ext.h" />
     <ClInclude Include="SystemManager.h" />
+    <ClInclude Include="Test.h" />
     <ClInclude Include="TestResult.h" />
     <ClInclude Include="TestsDatabaseManager.h" />
     <ClInclude Include="UserTest.h" />

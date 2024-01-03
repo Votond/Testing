@@ -7,7 +7,14 @@
 
 class SystemManager
 {
+	static SystemManager instance();
+
 public:
+	static SystemManager getInstance()
+	{
+		return instance();
+	}
+
 	void start()
 	{
 		int action;
@@ -70,7 +77,7 @@ public:
 				break;
 
 			case User::TESTER:
-				TesterArea::getInstance().start();
+				TesterArea::getInstance().start(login);
 				break;
 			}
 		}

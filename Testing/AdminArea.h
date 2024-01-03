@@ -1,3 +1,12 @@
 ﻿#pragma once
 
-class AdminArea;
+class AdminArea
+{
+    static AdminArea instance();
+
+public:
+    static AdminArea getInstance()
+    {
+        return instance();
+    }
+};
