@@ -42,6 +42,18 @@
     <ClCompile Include="sqlite\sqlite3.c">
       <Filter>Исходные файлы\sqlite</Filter>
     </ClCompile>
+    <ClCompile Include="AdminArea.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="TesterArea.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="UserTest.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="TestResult.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="User.h">
@@ -64,6 +76,18 @@
     </ClInclude>
     <ClInclude Include="sqlite\sqlite3ext.h">
       <Filter>Исходные файлы\sqlite</Filter>
+    </ClInclude>
+    <ClInclude Include="AdminArea.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="TesterArea.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="UserTest.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="TestResult.h">
+      <Filter>Исходные файлы</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

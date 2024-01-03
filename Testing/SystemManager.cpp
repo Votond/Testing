@@ -2,6 +2,8 @@
 #include "SystemManager.h"
 #include "DatabaseManager.cpp"
 #include "User.h"
+#include "AdminArea.cpp"
+#include "TesterArea.cpp"
 
 class SystemManager
 {
@@ -10,7 +12,7 @@ public:
 	{
 		int action;
 
-		cout << "-------* Тестирование *-------\nВход или регистрация?\n 1 - Вход\n2 - Регистрация\n";
+		cout << "-------* Тестирование *-------\nВход или регистрация?\n1 - Вход\n2 - Регистрация\n";
 		cin >> action;
 
 		switch (action)
@@ -64,13 +66,13 @@ public:
 			switch (pair.second)
 			{
 			case User::ADMIN:
-				// TODO go to user`s area
+				// TODO
 				break;
 
 			case User::TESTER:
-				// TODO go to user`s area
+				TesterArea::getInstance().start();
 				break;
-			};
+			}
 		}
 		else
 		{

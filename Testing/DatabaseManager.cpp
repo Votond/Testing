@@ -18,15 +18,17 @@ public:
 		return instance();
 	}
 
-	long getAccountsQuantity()
+	// Получение количества аккаунтов
+	int getAccountsQuantity()
 	{
 		sqlite3_prepare_v2(db, "SELECT Count(*) FROM users", -1, &stmt, 0);
 		sqlite3_step(stmt);
-		long quantity = sqlite3_column_int64(stmt, 0);
+		int quantity = sqlite3_column_int(stmt, 0);
 
 		return quantity;
 	}
 
+	// Проверка существования аккаунта по логину
 	bool checkExistence(string login)
 	{
 		string sql = format("SELECT COUNT(*) FROM users WHERE login = {}", SHA256::hashString(login));
@@ -74,6 +76,7 @@ public:
 		return true;
 	}
 
+	// Проверка существования аккаунта и его тип по логину и паролю
 	pair<bool, User::USER_TYPE> validate(string login, string password)
 	{
 		string sql = format("SELECT COUNT(*) FROM users WHERE login = {} AND password = {}",
