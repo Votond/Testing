@@ -19,6 +19,9 @@
     <Filter Include="Исходные файлы\sqlite">
       <UniqueIdentifier>{40162ee7-24a0-44cf-9555-cf5f9710caf7}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Исходные файлы\json">
+      <UniqueIdentifier>{453d1451-80db-4673-b34e-b8ac99f0cd73}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -54,6 +57,9 @@
     <ClCompile Include="TestResult.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
+    <ClCompile Include="TestsDatabaseManager.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="User.h">
@@ -87,6 +93,39 @@
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
     <ClInclude Include="TestResult.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="json\jsoncpp-1.9.5\include\json\allocator.h">
+      <Filter>Исходные файлы\json</Filter>
+    </ClInclude>
+    <ClInclude Include="json\jsoncpp-1.9.5\include\json\assertions.h">
+      <Filter>Исходные файлы\json</Filter>
+    </ClInclude>
+    <ClInclude Include="json\jsoncpp-1.9.5\include\json\config.h">
+      <Filter>Исходные файлы\json</Filter>
+    </ClInclude>
+    <ClInclude Include="json\jsoncpp-1.9.5\include\json\forwards.h">
+      <Filter>Исходные файлы\json</Filter>
+    </ClInclude>
+    <ClInclude Include="json\jsoncpp-1.9.5\include\json\json.h">
+      <Filter>Исходные файлы\json</Filter>
+    </ClInclude>
+    <ClInclude Include="json\jsoncpp-1.9.5\include\json\json_features.h">
+      <Filter>Исходные файлы\json</Filter>
+    </ClInclude>
+    <ClInclude Include="json\jsoncpp-1.9.5\include\json\reader.h">
+      <Filter>Исходные файлы\json</Filter>
+    </ClInclude>
+    <ClInclude Include="json\jsoncpp-1.9.5\include\json\value.h">
+      <Filter>Исходные файлы\json</Filter>
+    </ClInclude>
+    <ClInclude Include="json\jsoncpp-1.9.5\include\json\version.h">
+      <Filter>Исходные файлы\json</Filter>
+    </ClInclude>
+    <ClInclude Include="json\jsoncpp-1.9.5\include\json\writer.h">
+      <Filter>Исходные файлы\json</Filter>
+    </ClInclude>
+    <ClInclude Include="TestsDatabaseManager.h">
       <Filter>Исходные файлы</Filter>
     </ClInclude>
   </ItemGroup>

@@ -1,5 +1,6 @@
 ﻿#include "Includes.h"
 #include "TesterArea.h"
+#include "json/json.h"
 
 class TesterArea
 {
@@ -38,7 +39,10 @@ public:
 
 	void chooseResult()
 	{
-		
+		// TODO получение тестов из базы и их вывод
+
+		cout << "Введите id теста: ";
+		cin >> ;
 	}
 
 	void startTest(int id)
@@ -47,6 +51,11 @@ public:
 	}
 
 	void viewResult(int id)
+	{
+		
+	}
+
+	void printPassedTests()
 	{
 		
 	}

@@ -77,6 +77,7 @@
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp20</LanguageStandard>
+      <AdditionalIncludeDirectories>C:\Users\1\source\repos\Testing\Testing\json\jsoncpp-1.9.5\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -91,6 +92,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>C:\Users\1\source\repos\Testing\Testing\json\jsoncpp-1.9.5\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -106,6 +108,7 @@
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp20</LanguageStandard>
+      <AdditionalIncludeDirectories>C:\Users\1\source\repos\Testing\Testing\json\jsoncpp-1.9.5\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -120,6 +123,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>C:\Users\1\source\repos\Testing\Testing\json\jsoncpp-1.9.5\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -137,6 +141,7 @@
     <ClCompile Include="sqlite\sqlite3.c" />
     <ClCompile Include="SystemManager.cpp" />
     <ClCompile Include="TestResult.cpp" />
+    <ClCompile Include="TestsDatabaseManager.cpp" />
     <ClCompile Include="UserTest.cpp" />
     <ClCompile Include="TesterArea.cpp" />
     <ClCompile Include="User.cpp" />
@@ -145,11 +150,22 @@
     <ClInclude Include="AdminArea.h" />
     <ClInclude Include="DatabaseManager.h" />
     <ClInclude Include="Includes.h" />
+    <ClInclude Include="json\jsoncpp-1.9.5\include\json\allocator.h" />
+    <ClInclude Include="json\jsoncpp-1.9.5\include\json\assertions.h" />
+    <ClInclude Include="json\jsoncpp-1.9.5\include\json\config.h" />
+    <ClInclude Include="json\jsoncpp-1.9.5\include\json\forwards.h" />
+    <ClInclude Include="json\jsoncpp-1.9.5\include\json\json.h" />
+    <ClInclude Include="json\jsoncpp-1.9.5\include\json\json_features.h" />
+    <ClInclude Include="json\jsoncpp-1.9.5\include\json\reader.h" />
+    <ClInclude Include="json\jsoncpp-1.9.5\include\json\value.h" />
+    <ClInclude Include="json\jsoncpp-1.9.5\include\json\version.h" />
+    <ClInclude Include="json\jsoncpp-1.9.5\include\json\writer.h" />
     <ClInclude Include="sha256\sha256.h" />
     <ClInclude Include="sqlite\sqlite3.h" />
     <ClInclude Include="sqlite\sqlite3ext.h" />
     <ClInclude Include="SystemManager.h" />
     <ClInclude Include="TestResult.h" />
+    <ClInclude Include="TestsDatabaseManager.h" />
     <ClInclude Include="UserTest.h" />
     <ClInclude Include="TesterArea.h" />
     <ClInclude Include="User.h" />
