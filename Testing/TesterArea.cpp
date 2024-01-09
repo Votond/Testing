@@ -1,117 +1,113 @@
-﻿#include "Includes.h"
-#include "TesterArea.h"
-#include "json/json.h"
-#include "TestsDatabaseManager.cpp"
-#include "UserTest.h"
+﻿#include "TesterArea.h"
 
-class TesterArea
+#include "Test.h"
+
+extern static TesterArea instance();
+
+TesterArea TesterArea::getInstance()
 {
-	static TesterArea instance();
+	return instance;
+}
 
-public:
-	static TesterArea getInstance()
+void TesterArea::start(string login)
+{
+	int action;
+
+	cout << "Выберите действие:\n1 - Просмотр результатов тестов\n2 - Прохождение теста\n";
+	cin >> action;
+
+	switch (action)
 	{
-		return instance();
+	case 1:
+		chooseResult(login);
+		break;
+
+	case 2:
+		chooseTest(login);
+		break;
 	}
+}
 
-	void start(string login)
+void TesterArea::chooseTest(string login)
+{
+	
+}
+
+void TesterArea::chooseResult(string login)
+{
+	string section;
+	string name;
+	TestsDatabaseManager tests_manager(login);
+	vector<string> sections = tests_manager.getSections();
+	vector<Test> tests;
+
+	printSections(sections);
+
+	cout << "Введите название нужного раздела: ";
+	cin >> section;
+
+	tests = tests_manager.getTestsInSection(section);
+
+	printTests(tests);
+
+	cout << "Введите название нужного теста: ";
+	cin >> name;
+
+	Test test = getTestByName(tests, name);
+
+	cout << "| Название: " << test.getName() << endl;
+	cout << "| Раздел: " << test.getSection() << endl;
+	cout << "| Результат:\n";
+	printTestResult(test.getResult());
+
+	start(login);
+
+	throw "need rework";
+}
+
+void TesterArea::startTest(int id)
+{
+	
+}
+
+void TesterArea::viewResult(int id)
+{
+
+
+}
+
+void TesterArea::printSections(vector<string> sections)
+{
+	for (string section : sections)
 	{
-		int action;
+		cout << format("~~~~~~~~* {} *~~~~~~~~\n", section);
+	}
+}
 
-		cout << "Выберите действие:\n1 - Просмотр результатов тестов\n2 - Прохождение теста\n";
-		cin >> action;
+void TesterArea::printTests(vector<UserTest> tests)
+{
+	for (UserTest test : tests)
+	{
+		cout << format("--------* {} *--------\n", test.getName());
+	}
+}
 
-		switch (action)
+UserTest TesterArea::getTestByName(vector<UserTest> tests, string name)
+{
+	for (UserTest test : tests)
+	{
+		if (test.getName() == name)
 		{
-		case 1:
-			chooseResult(login);
-			break;
-
-		case 2:
-			chooseTest(login);
-			break;
+			return test;
 		}
 	}
+}
 
-	void chooseTest(string login)
-	{
-		
-	}
-
-	void chooseResult(string login)
-	{
-		string section;
-		string name;
-		TestsDatabaseManager tests_manager(login);
-		vector<string> sections = tests_manager.getSections();
-		vector<UserTest> tests;
-
-		printSections(sections);
-
-		cout << "Введите название нужного раздела: ";
-		cin >> section;
-
-		tests = tests_manager.getTestsInSection(section);
-
-		printTests(tests);
-
-		cout << "Введите название нужного теста: ";
-		cin >> name;
-
-		UserTest test = getTestByName(tests, name);
-
-		cout << "| Название: " << test.getName() << endl;
-		cout << "| Раздел: " << test.getSection() << endl;
-		cout << "| Результат:\n";
-		printTestResult(test.getResult());
-
-		start(login);
-	}
-
-	void startTest(int id)
-	{
-		
-	}
-
-	void viewResult(int id)
-	{
-
-
-	}
-
-	void printSections(vector<string> sections)
-	{
-		for (string section : sections)
-		{
-			cout << format("~~~~~~~~* {} *~~~~~~~~\n", section);
-		}
-	}
-
-	void printTests(vector<UserTest> tests)
-	{
-		for (UserTest test : tests)
-		{
-			cout << format("--------* {} *--------\n", test.getName());
-		}
-	}
-
-	UserTest getTestByName(vector<UserTest> tests, string name)
-	{
-		for (UserTest test : tests)
-		{
-			if (test.getName() == name)
-			{
-				return test;
-			}
-		}
-	}
-
-	void printTestResult(TestResult result)
-	{
-		cout << "| Правильные ответы: " << result.getCorrect() << endl;
-		cout << "| Неправильные ответы: " << result.getIncorrect() << endl;
-		cout << "| Процент правильных ответов: " << result.getCorrectPerc() << endl;
-		cout << "| Процент неправильных ответов: " << result.getIncorrectPerc() << endl;
-		cout << "| Оценка: " << result.getMark() << endl;
-	}
-};
+void TesterArea::printTestResult(TestResult result)
+{
+	cout << "| Правильные ответы: " << result.getCorrect() << endl;
+	cout << "| Неправильные ответы: " << result.getIncorrect() << endl;
+	cout << "| Процент правильных ответов: " << result.getCorrectPerc() << endl;
+	cout << "| Процент неправильных ответов: " << result.getIncorrectPerc() << endl;
+	cout << "| Оценка: " << result.getMark() << endl;
+}

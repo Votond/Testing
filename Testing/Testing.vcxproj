@@ -140,10 +140,7 @@
     <ClCompile Include="sqlite\shell.c" />
     <ClCompile Include="sqlite\sqlite3.c" />
     <ClCompile Include="SystemManager.cpp" />
-    <ClCompile Include="Test.cpp" />
     <ClCompile Include="TestResult.cpp" />
-    <ClCompile Include="TestsDatabaseManager.cpp" />
-    <ClCompile Include="UserTest.cpp" />
     <ClCompile Include="TesterArea.cpp" />
     <ClCompile Include="User.cpp" />
   </ItemGroup>
@@ -167,8 +164,6 @@
     <ClInclude Include="SystemManager.h" />
     <ClInclude Include="Test.h" />
     <ClInclude Include="TestResult.h" />
-    <ClInclude Include="TestsDatabaseManager.h" />
-    <ClInclude Include="UserTest.h" />
     <ClInclude Include="TesterArea.h" />
     <ClInclude Include="User.h" />
   </ItemGroup>

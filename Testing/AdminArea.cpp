@@ -1,13 +1,7 @@
 ﻿#include "Includes.h"
 #include "AdminArea.h"
 
-class AdminArea
+AdminArea AdminArea::getInstance()
 {
-	static AdminArea instance();
-
-public:
-	static AdminArea getInstance()
-	{
-		return instance();
-	}
-};
+	return instance();
+}

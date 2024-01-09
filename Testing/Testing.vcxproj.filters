@@ -48,19 +48,10 @@
     <ClCompile Include="AdminArea.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
-    <ClCompile Include="TesterArea.cpp">
-      <Filter>Исходные файлы</Filter>
-    </ClCompile>
-    <ClCompile Include="UserTest.cpp">
-      <Filter>Исходные файлы</Filter>
-    </ClCompile>
     <ClCompile Include="TestResult.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
-    <ClCompile Include="TestsDatabaseManager.cpp">
-      <Filter>Исходные файлы</Filter>
-    </ClCompile>
-    <ClCompile Include="Test.cpp">
+    <ClCompile Include="TesterArea.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
   </ItemGroup>
@@ -90,9 +81,6 @@
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
     <ClInclude Include="TesterArea.h">
-      <Filter>Файлы заголовков</Filter>
-    </ClInclude>
-    <ClInclude Include="UserTest.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
     <ClInclude Include="TestResult.h">
@@ -128,11 +116,8 @@
     <ClInclude Include="json\jsoncpp-1.9.5\include\json\writer.h">
       <Filter>Исходные файлы\json</Filter>
     </ClInclude>
-    <ClInclude Include="TestsDatabaseManager.h">
-      <Filter>Файлы заголовков</Filter>
-    </ClInclude>
     <ClInclude Include="Test.h">
-      <Filter>Исходные файлы</Filter>
+      <Filter>Файлы заголовков</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
