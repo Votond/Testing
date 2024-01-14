@@ -8,9 +8,9 @@
 
 class SystemManager
 {
-	static SystemManager instance();
+	static SystemManager instance;
 public:
-	static SystemManager getInstance();
+	static SystemManager getInstance() { return instance; };
 	void start();
 	void registration();
 	void login();

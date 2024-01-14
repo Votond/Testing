@@ -1,10 +1,5 @@
 ﻿#include "SystemManager.h"
 
-SystemManager SystemManager::getInstance()
-{
-	return instance();
-}
-
 void SystemManager::start()
 {
 	int action;

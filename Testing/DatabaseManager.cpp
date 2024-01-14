@@ -63,6 +63,10 @@ bool DatabaseManager::addUser(User user)
 	return true;
 }
 
+bool addUserResult(int user_id, TestResult result)
+{
+
+}
 
 pair<bool, User::USER_TYPE> DatabaseManager::validate(string login, string password)
 {
@@ -126,6 +130,26 @@ pair<bool, User::USER_TYPE> DatabaseManager::validate(string login, string passw
 
 		return result;
 	}
+}
+
+vector<string> DatabaseManager::getSections()
+{
+
+}
+
+vector<Test> DatabaseManager::getTestsInSection(string section) 
+{
+
+}
+
+TestResult DatabaseManager::getUserResult(int user_id, string test_name)
+{
+
+}
+
+int DatabaseManager::getUserIdByLogin(string login)
+{
+
 }
 
 DatabaseManager::DatabaseManager()

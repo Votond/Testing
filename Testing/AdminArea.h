@@ -2,8 +2,8 @@
 
 class AdminArea
 {
-    static AdminArea instance();
+    static AdminArea instance;
 
 public:
-    static AdminArea getInstance();
+    static AdminArea getInstance() { return instance; };
 };

@@ -1,7 +1,7 @@
 ﻿#pragma once
 
 #include "Includes.h"
-#include "UserTest.h"
+#include "Test.h"
 
 class User
 {
@@ -19,7 +19,7 @@ private:
 	string login;
 	string password;
 	USER_TYPE user_type;
-	vector<UserTest> tests;
+	vector<Test> tests;
 
 public:
 	User(const string& fio, const string& address, const string& phone_number, const string& login, const string& password, const USER_TYPE& user_type);
@@ -30,6 +30,6 @@ public:
 	string getLogin() { return login; }
 	string getPassword() { return password; }
 	USER_TYPE getUserType() { return user_type; }
-	vector<UserTest> getTests() { return tests; }
-	void addTest(UserTest test) { tests.push_back(test); }
+	vector<Test> getTests() { return tests; }
+	void addTest(Test test) { tests.push_back(test); }
 };

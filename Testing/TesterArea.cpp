@@ -1,14 +1,5 @@
 ﻿#include "TesterArea.h"
 
-#include "Test.h"
-
-extern static TesterArea instance();
-
-TesterArea TesterArea::getInstance()
-{
-	return instance;
-}
-
 void TesterArea::start(string login)
 {
 	int action;
@@ -30,15 +21,63 @@ void TesterArea::start(string login)
 
 void TesterArea::chooseTest(string login)
 {
+	string section;
+	string test_name;
+	int counter = 1;
+	int correct = 0;
+	int incorrect = 0;
+
+	printSections(DatabaseManager::getInstance().getSections());
+
+	cout << "Выберите раздел: ";
+	cin >> section;
+
+	vector<Test> tests = DatabaseManager::getInstance().getTestsInSection(section);
+
+	printTests(tests);
+
+	cout << "Выберите тест: ";
+	cin >> test_name;
+
+	Test test = getTestByName(tests, test_name);
+
+	for (Test::Question question : test.getQuestions())
+	{
+		string user_answer;
+		int answer_counter = 1;
+
+		cout << "Вопрос N" << counter << ":\n";
+		cout << question.getQuestion() << endl;
+
+		cout << "Варианты ответа:\n";
+		for (string answer : question.getAnswers())
+		{
+			cout << "[" << answer_counter << "] " << answer;
+			answer_counter++;
+		}
+		cout << endl;
+
+		cout << "Введите ответ: ";
+		cin >> user_answer;
+
+		if (user_answer == question.getRightAnswer())
+			correct++;
+		else
+			incorrect++;
+		
+		counter++;
+	}
+
+	DatabaseManager::getInstance().addUserResult(DatabaseManager::getInstance().getUserIdByLogin(login), TestResult(correct, incorrect));
 	
+	start(login);
 }
 
 void TesterArea::chooseResult(string login)
 {
 	string section;
 	string name;
-	TestsDatabaseManager tests_manager(login);
-	vector<string> sections = tests_manager.getSections();
+	vector<string> sections = DatabaseManager::getInstance().getSections();
 	vector<Test> tests;
 
 	printSections(sections);
@@ -46,7 +85,7 @@ void TesterArea::chooseResult(string login)
 	cout << "Введите название нужного раздела: ";
 	cin >> section;
 
-	tests = tests_manager.getTestsInSection(section);
+	tests = DatabaseManager::getInstance().getTestsInSection(section);
 
 	printTests(tests);
 
@@ -58,22 +97,9 @@ void TesterArea::chooseResult(string login)
 	cout << "| Название: " << test.getName() << endl;
 	cout << "| Раздел: " << test.getSection() << endl;
 	cout << "| Результат:\n";
-	printTestResult(test.getResult());
+	printTestResult(DatabaseManager::getInstance().getUserResult(DatabaseManager::getInstance().getUserIdByLogin(login), test.getName()));
 
 	start(login);
-
-	throw "need rework";
-}
-
-void TesterArea::startTest(int id)
-{
-	
-}
-
-void TesterArea::viewResult(int id)
-{
-
-
 }
 
 void TesterArea::printSections(vector<string> sections)
@@ -84,17 +110,17 @@ void TesterArea::printSections(vector<string> sections)
 	}
 }
 
-void TesterArea::printTests(vector<UserTest> tests)
+void TesterArea::printTests(vector<Test> tests)
 {
-	for (UserTest test : tests)
+	for (Test test : tests)
 	{
 		cout << format("--------* {} *--------\n", test.getName());
 	}
 }
 
-UserTest TesterArea::getTestByName(vector<UserTest> tests, string name)
+Test TesterArea::getTestByName(vector<Test> tests, string name)
 {
-	for (UserTest test : tests)
+	for (Test test : tests)
 	{
 		if (test.getName() == name)
 		{
@@ -105,9 +131,9 @@ UserTest TesterArea::getTestByName(vector<UserTest> tests, string name)
 
 void TesterArea::printTestResult(TestResult result)
 {
-	cout << "| Правильные ответы: " << result.getCorrect() << endl;
-	cout << "| Неправильные ответы: " << result.getIncorrect() << endl;
-	cout << "| Процент правильных ответов: " << result.getCorrectPerc() << endl;
-	cout << "| Процент неправильных ответов: " << result.getIncorrectPerc() << endl;
-	cout << "| Оценка: " << result.getMark() << endl;
+	cout << "  | Правильные ответы: " << result.getCorrect() << endl;
+	cout << "  | Неправильные ответы: " << result.getIncorrect() << endl;
+	cout << "  | Процент правильных ответов: " << result.getCorrectPerc() << endl;
+	cout << "  | Процент неправильных ответов: " << result.getIncorrectPerc() << endl;
+	cout << "  | Оценка: " << result.getMark() << endl;
 }

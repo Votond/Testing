@@ -2,18 +2,17 @@
 #include "Includes.h"
 #include "Test.h"
 #include "TestResult.h"
+#include "DatabaseManager.h"
 
 class TesterArea
 {
-	static TesterArea instance{};
+	static TesterArea instance;
 
 public:
-	static TesterArea getInstance();
+	static TesterArea getInstance() { return instance; };
 	void start(string login);
 	void chooseTest(string login);
 	void chooseResult(string login);
-	void startTest(int id);
-	void viewResult(int id);
 	void printSections(vector<string> sections);
 	void printTests(vector<Test> tests);
 	Test getTestByName(vector<Test> tests, string name);
