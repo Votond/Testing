@@ -1,6 +1,6 @@
 ﻿#include "TestResult.h"
 
-TestResult::TestResult(int correct, int incorrect) : correct(correct), incorrect(incorrect)
+TestResult::TestResult(int test_id, int correct, int incorrect) : correct(correct), incorrect(incorrect), test_id(test_id)
 {
 	float total = correct + incorrect;
 

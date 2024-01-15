@@ -23,7 +23,10 @@ public:
 	bool addUserResult(int user_id, TestResult result);
 	// Проверка существования аккаунта и его тип по логину и паролю
 	pair<bool, User::USER_TYPE> validate(string login, string password);
-	vector<string> getSections();
+	vector<pair<int, string>> getSections();
+	vector<Test::Question> getQuestionsForTest(int test_id);
+	int getSectionByName(string name);
+	Test getTestByName(string name);
 	vector<Test> getTestsInSection(string section);
 	TestResult getUserResult(int user_id, string test_name);
 	int getUserIdByLogin(string login);

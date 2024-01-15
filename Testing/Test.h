@@ -24,18 +24,14 @@ public:
 	};
 
 private:
+	int test_id;
 	string section;
 	string name;
 	vector<Question> questions;
-	TestResult result;
 
 public:
-	Test(string section, string name, vector<Question> questions) : section(section), name(name), questions(questions), result(TestResult(1, 1))
-	{
-		
-	}
 
-	Test(string section, string name, vector<Question> questions, int correct, int incorrect) : section(section), name(name), questions(questions), result(TestResult(correct, incorrect))
+	Test(int test_id, string section, string name, vector<Question> questions) : test_id(test_id), section(section), name(name), questions(questions)
 	{
 
 	}
@@ -43,5 +39,4 @@ public:
 	string getSection() { return section; }
 	string getName() { return name; }
 	vector<Question> getQuestions() { return questions; }
-	TestResult getResult() { return result; }
 };

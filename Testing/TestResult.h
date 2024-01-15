@@ -23,6 +23,7 @@ public:
 	};
 
 private:
+	int test_id;
 	MARK mark;
 	int correct;
 	int incorrect;
@@ -32,8 +33,9 @@ private:
 	float incorrect_perc;
 
 public:
-	TestResult(int correct, int incorrect);
+	TestResult(int test_id, int correct, int incorrect);
 
+	int getTestId() { return test_id; }
 	MARK getMark() { return mark; }
 	int getCorrect() { return correct; }
 	int getIncorrect() { return incorrect; }
