@@ -31,7 +31,6 @@ public:
 	TestResult getUserResult(int user_id, string test_name);
 	int getUserIdByLogin(string login);
 
-private:
 	DatabaseManager();
 	~DatabaseManager();
 	void createDatabase();

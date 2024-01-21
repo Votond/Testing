@@ -36,6 +36,7 @@ public:
 
 	}
 
+	int getId() { return test_id; }
 	string getSection() { return section; }
 	string getName() { return name; }
 	vector<Question> getQuestions() { return questions; }

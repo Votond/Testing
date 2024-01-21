@@ -13,7 +13,7 @@ public:
 	void start(string login);
 	void chooseTest(string login);
 	void chooseResult(string login);
-	void printSections(vector<string> sections);
+	void printSections(vector<pair<int, string>> sections);
 	void printTests(vector<Test> tests);
 	Test getTestByName(vector<Test> tests, string name);
 	void printTestResult(TestResult result);

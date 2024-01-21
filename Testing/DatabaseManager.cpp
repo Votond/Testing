@@ -261,7 +261,7 @@ vector<Test> DatabaseManager::getTestsInSection(string section)
 
 TestResult DatabaseManager::getUserResult(int user_id, string test_name)
 {//id INTEGER PRIMARY KEY AUTOINCREMENT, user_id INTEGER, test_id INTEGER, correct INTEGER, incorrect INTEGER
-	sqlite3_prepare_v2(db, format("SELECT (test_id, correct, incorrect) FROM results WHERE user_id = {} AND test_id = {}", user_id, getTestByName(test_name)).c_str(), -1, &stmt, 0);
+	sqlite3_prepare_v2(db, format("SELECT (test_id, correct, incorrect) FROM results WHERE user_id = {} AND test_id = {}", user_id, getTestByName(test_name).getId()).c_str(), -1, &stmt, 0);
 	sqlite3_step(stmt);
 	int test_id = sqlite3_column_int(stmt, 0);
 	int correct = sqlite3_column_int(stmt, 1);

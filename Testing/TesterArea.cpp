@@ -68,7 +68,7 @@ void TesterArea::chooseTest(string login)
 		counter++;
 	}
 
-	DatabaseManager::getInstance().addUserResult(DatabaseManager::getInstance().getUserIdByLogin(login), TestResult(correct, incorrect));
+	DatabaseManager::getInstance().addUserResult(DatabaseManager::getInstance().getUserIdByLogin(login), TestResult(test.getId(), correct, incorrect));
 	
 	start(login);
 }
@@ -77,7 +77,7 @@ void TesterArea::chooseResult(string login)
 {
 	string section;
 	string name;
-	vector<string> sections = DatabaseManager::getInstance().getSections();
+	vector<pair<int, string>> sections = DatabaseManager::getInstance().getSections();
 	vector<Test> tests;
 
 	printSections(sections);
@@ -102,11 +102,11 @@ void TesterArea::chooseResult(string login)
 	start(login);
 }
 
-void TesterArea::printSections(vector<string> sections)
+void TesterArea::printSections(vector<pair<int, string>> sections)
 {
-	for (string section : sections)
+	for (pair<int, string> section : sections)
 	{
-		cout << format("~~~~~~~~* {} *~~~~~~~~\n", section);
+		cout << format("~~~~~~~~* {} *~~~~~~~~\n", section.second);
 	}
 }
 
